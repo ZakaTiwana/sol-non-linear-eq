@@ -5,9 +5,15 @@ import { RegulaFalsiComponent } from './regula-falsi/regula-falsi.component';
 import { SecantComponent } from './secant/secant.component';
 import { NewtonRaphsonComponent } from './newton-raphson/newton-raphson.component';
 import { IterationComponent } from './iteration/iteration.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
+  {
+    path:"",
+    pathMatch:"full",
+    component:HomeComponent
+  },
   {
     path:"bisection",
     component:BisectionComponent

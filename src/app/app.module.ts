@@ -9,6 +9,7 @@ import { RegulaFalsiComponent } from './regula-falsi/regula-falsi.component';
 import { SecantComponent } from './secant/secant.component';
 import { NewtonRaphsonComponent } from './newton-raphson/newton-raphson.component';
 import { IterationComponent } from './iteration/iteration.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { IterationComponent } from './iteration/iteration.component';
     RegulaFalsiComponent,
     SecantComponent,
     NewtonRaphsonComponent,
-    IterationComponent
+    IterationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

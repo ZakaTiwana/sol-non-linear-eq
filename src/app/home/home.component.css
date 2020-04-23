@@ -1,0 +1,13 @@
+#home{
+    background-color: black;
+    height: 70vh;
+    display: grid;
+}
+#home > h1{
+    font-size: 3rem;
+    padding:  2rem 3rem;
+    font-weight: bolder;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}

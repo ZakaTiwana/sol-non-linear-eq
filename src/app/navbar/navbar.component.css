@@ -1,8 +1,36 @@
-a{
-    text-decoration: none;
-    border: 1px solid black;
-    padding: 2rem;
+
+#main-navbar{
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 0.3rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    
 }
-.active{
-    background-color: aqua;
+a {
+    /* align-self: center; */
+
+    text-align: center;
+    color: white;
+    padding: 0.7rem 0.6rem;
+    border-radius: 5px;
+}
+a:hover{
+    background-color: rgb(90, 90, 90);
+}
+a:visited{
+    color: white;
+}
+a.active{
+    background-color: green;
+}
+a.active:hover{
+    background-color: green;
+}
+
+@media only screen and (max-width:700px){
+    #main-navbar{
+        grid-template-columns: 1fr;
+    }
 }
