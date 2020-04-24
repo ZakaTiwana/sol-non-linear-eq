@@ -6,6 +6,7 @@ import { SecantComponent } from './secant/secant.component';
 import { NewtonRaphsonComponent } from './newton-raphson/newton-raphson.component';
 import { IterationComponent } from './iteration/iteration.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path:"iteration",
     component:IterationComponent
+  },
+  {
+    path:"**",
+    component:PageNotFoundComponent
   }
 ];
 

@@ -1,1 +1,21 @@
-<p>bisection works!</p>
+<div id="bisection-container">
+    <h1> Find Root by Bisection Method</h1>
+    <form class="biform" [formGroup]="biFrom" >
+        <label for="equation" class="biform__label">f(x) = </label>
+        <input  required type="text" id="equation" formControlName="equation" class="biform__input" placeholder="e.g  sin(x) - x^2 + 1">
+        <label for="from" class="biform__label">Interval (a) From :</label>
+        <input  required type="number" id="from" formControlName="from" class="biform__input" step="0.001" placeholder="e.g 0.4">
+        <label for="to"  class="biform__label">Interval (b) To :</label>
+        <input  required type="number" id="to" formControlName="to" class="biform__input"  step="0.001" placeholder="e.g 0.6">
+
+        <label for="precision" class="biform__label">precision upto decimal places :</label>
+        <select  name="precision" id="precision" formControlName="precision" class="biform__select">
+            <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
+        </select>
+        <button (click)="log()" class="biform__submit"> find </button>
+    </form>
+    <hr>
+    <div *ngIf="isSubmited" class="bidisplay">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam, eveniet.</p>
+    </div>
+</div>

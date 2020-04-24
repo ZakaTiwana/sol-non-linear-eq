@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = "Solution TO NON-Linear Equation";
+  title = "Solution To NON-Linear Equation";
   constructor() { }
 
   ngOnInit() {

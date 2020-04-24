@@ -1,0 +1,49 @@
+#bisection-container{
+    background-color: black;
+    min-height: 70vh;
+    padding: 2rem;
+    
+}
+
+.biform{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+
+.biform__submit{
+    grid-column: 3/4;   
+    background-color: green;
+    border: none;
+    height: 2rem;
+    color: inherit;
+    border-radius: 5px;
+}
+.biform__submit:hover{
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+
+.biform__submit:focus{
+    border: 1px solid greenyellow;
+}
+
+.biform__label{
+    grid-column: 1/1;
+}
+.biform__input{
+    grid-column: 2/4;
+}
+.biform > *[type=number]:focus,*[type=text]:focus,#precision:focus{
+    border: 2px solid rgb(0, 89, 255);
+    border-radius: 2px;
+}
+
+@media only screen and (max-width:600px){
+    .biform{
+        grid-template-columns: 1fr;
+    }
+    .biform > *{
+        grid-column: auto;
+    }
+}
