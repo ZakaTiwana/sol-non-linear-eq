@@ -12,10 +12,10 @@
         <select  name="precision" id="precision" formControlName="precision" class="biform__select">
             <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
         </select>
-        <button (click)="log()" class="biform__submit"> find </button>
+        <button (click)="eval()" class="biform__submit"> find </button>
     </form>
     <hr>
     <div *ngIf="isSubmited" class="bidisplay">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam, eveniet.</p>
+        <p>ans = {{ans}}</p>
     </div>
 </div>
