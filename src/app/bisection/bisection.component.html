@@ -16,6 +16,30 @@
     </form>
     <hr>
     <div *ngIf="isSubmited" class="bidisplay">
-        <p>ans = {{ans}}</p>
+        <!-- <div *ngFor="let d of data">
+            <p>Iteration : {{d.i}}</p>
+            <p>Intreval [a,b] : [{{d.a| number:precision}},{{d.b| number:precision}}]</p>
+            <p>c : {{d.c| number:precision}}</p>
+            <p>f(c) : {{d.f_of_c | number:precision}}</p>
+        </div> -->
+        <table>
+            <thead>
+                <th>n</th>
+                <th>a</th>
+                <th>b</th>
+                <th>c = (a+b)/2</th>
+                <th>f(c)</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.i}}</td>
+                    <td>{{d.a | number:precision}}</td>
+                    <td>{{d.b | number:precision}}</td>
+                    <td>{{d.c | number:precision}}</td>
+                    <td>{{d.f_of_c | number:precision}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
