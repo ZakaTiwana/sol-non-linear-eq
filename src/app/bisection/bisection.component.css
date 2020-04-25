@@ -26,7 +26,14 @@
 
 .biform__submit:focus{
     border: 1px solid greenyellow;
+    outline: none;
 }
+
+.biform__submit::-moz-focus-inner {
+    border: 0;
+}
+
+
 
 .biform__label{
     grid-column: 1/1;

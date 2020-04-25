@@ -12,6 +12,8 @@ export class BisectionComponent implements OnInit {
   f:any;
   precision:string;
   data:biData[];
+  root:number;
+  gotResult = false;
 
   biFrom:FormGroup ;  
   constructor(private fb:FormBuilder) { }
@@ -39,20 +41,34 @@ export class BisectionComponent implements OnInit {
     p = this.biFrom.value.precision;
     this.precision = '.1-'+p;
     this.bisectionMethod(a,b,p,100);
+    this.root = this.data.slice(-1)[0].c;
   }
 
   bisectionMethod(a:number,b:number,p:number,n:number){
     this.data = [];
     let c:number;
+    let pre_c:number;
+
     for (let i = 0; i < n; i++) {
+        pre_c = this.roundOff(c,p);
         c = (a+b)/2;
         let f_of_c:number = this.f(c);
         this.data.push(new biData(i,a,b,c,f_of_c));
-        if( this.roundOff(f_of_c,p) === 0) break;
+        if( this.roundOff(f_of_c,p) === 0){ 
+          this.gotResult = true;
+          console.log({gotResult:this.gotResult});
+          break;
+        }
+        if( this.roundOff(c,p) === pre_c) {
+          this.gotResult = false;
+          console.log({gotResult:this.gotResult});
+          break;
+        }
         let f_of_a:number = this.f(a);
         if ( f_of_a*f_of_c  < 0) b = c;
         else a = c;
-    } 
+    }
+     
   }
 
   roundOff(x:number,p:number){

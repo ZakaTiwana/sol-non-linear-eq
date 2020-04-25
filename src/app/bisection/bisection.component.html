@@ -1,20 +1,19 @@
 <div id="bisection-container">
     <h1> Find Root by Bisection Method</h1>
-    <form class="biform" [formGroup]="biFrom" >
+    <form class="biform form-group" [formGroup]="biFrom" >
         <label for="equation" class="biform__label">f(x) = </label>
-        <input  required type="text" id="equation" formControlName="equation" class="biform__input" placeholder="e.g  sin(x) - x^2 + 1">
+        <input  required type="text" id="equation" formControlName="equation" class="biform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
         <label for="from" class="biform__label">Interval (a) From :</label>
-        <input  required type="number" id="from" formControlName="from" class="biform__input" step="0.001" placeholder="e.g 0.4">
+        <input  required type="number" id="from" formControlName="from" class="biform__input form-control" step="0.001" placeholder="e.g 0.4">
         <label for="to"  class="biform__label">Interval (b) To :</label>
-        <input  required type="number" id="to" formControlName="to" class="biform__input"  step="0.001" placeholder="e.g 0.6">
+        <input  required type="number" id="to" formControlName="to" class="biform__input form-control"  step="0.001" placeholder="e.g 0.6">
 
         <label for="precision" class="biform__label">precision upto decimal places :</label>
-        <select  name="precision" id="precision" formControlName="precision" class="biform__select">
+        <select  name="precision" id="precision" formControlName="precision" class="biform__select form-control">
             <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
         </select>
-        <button (click)="eval()" class="biform__submit"> find </button>
+        <button (click)="eval()" class="biform__submit"> Find </button>
     </form>
-
 
     <div *ngIf="isSubmited" class="bidisplay">
         <h3>Solution for; f(x) = {{biFrom.value.equation}} </h3>
@@ -37,5 +36,10 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="bidisplay__result">
+            <h5 *ngIf="gotResult"> Root is {{root| number:precision}} </h5>
+            <h5 *ngIf="!gotResult"> Cannot find root in given interval</h5>
+        </div>
     </div>
 </div>
