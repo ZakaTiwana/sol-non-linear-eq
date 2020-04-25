@@ -8,6 +8,7 @@ import { parser } from 'mathjs';
   styleUrls: ['./bisection.component.css'],
 })
 export class BisectionComponent implements OnInit {
+  MAX_ITERATION=100;
   isSubmited = false;
   f:any;
   precision:string;
@@ -15,32 +16,32 @@ export class BisectionComponent implements OnInit {
   root:number;
   gotResult = false;
 
-  biFrom:FormGroup ;  
+  biForm:FormGroup ;  
   constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
-    this.biFrom = this.fb.group({
+    this.biForm = this.fb.group({
       equation:"",
       from:null,
       to:null,
       precision:1
     });
-    this.biFrom.valueChanges.subscribe(()=>this.isSubmited=false);
+    this.biForm.valueChanges.subscribe(()=>this.isSubmited=false);
   }
 
   eval(){
-    if(this.biFrom.invalid) return;
+    if(this.biForm.invalid) return;
     this.isSubmited = true;
     const par = parser();
-    par.evaluate('f(x) = '+this.biFrom.value.equation);
+    par.evaluate('f(x) = '+this.biForm.value.equation);
     this.f = par.get('f');
     par.clear();
     let a:number,b:number,p:number;
-    a = this.biFrom.value.from;
-    b = this.biFrom.value.to;
-    p = this.biFrom.value.precision;
+    a = this.biForm.value.from;
+    b = this.biForm.value.to;
+    p = this.biForm.value.precision;
     this.precision = '.1-'+p;
-    this.bisectionMethod(a,b,p,100);
+    this.bisectionMethod(a,b,p,this.MAX_ITERATION);
     this.root = this.data.slice(-1)[0].c;
   }
 

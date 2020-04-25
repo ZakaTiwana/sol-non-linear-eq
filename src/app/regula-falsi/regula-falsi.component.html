@@ -1,1 +1,45 @@
-<p>regula-falsi works!</p>
+<div id="regulaFalsi-container">
+    <h1> Find Root by Regula Falsi Method</h1>
+    <form class="rfform form-group" [formGroup]="rfForm" >
+        <label for="equation" class="rfform__label">f(x) = </label>
+        <input  required type="text" id="equation" formControlName="equation" class="rfform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
+        <label for="from" class="rfform__label">Interval (a) From :</label>
+        <input  required type="number" id="from" formControlName="from" class="rfform__input form-control" step="0.001" placeholder="e.g 0.4">
+        <label for="to"  class="rfform__label">Interval (b) To :</label>
+        <input  required type="number" id="to" formControlName="to" class="rfform__input form-control"  step="0.001" placeholder="e.g 0.6">
+
+        <label for="precision" class="rfform__label">precision upto decimal places :</label>
+        <select  name="precision" id="precision" formControlName="precision" class="rfform__select form-control">
+            <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
+        </select>
+        <button (click)="eval()" class="rfform__submit"> Find </button>
+    </form>
+
+    <div *ngIf="isSubmited" class="rfdisplay">
+        <h3>Solution for; f(x) = {{rfForm.value.equation}} </h3>
+        <table class="table rfdisplay__table">
+            <thead>
+                <th>n</th>
+                <th>a</th>
+                <th>b</th>
+                <th><img src="../../assets/rf_folmula.svg" style="filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(329deg) brightness(102%) contrast(106%);;" alt="folmula"></th>
+                <th>f(c)</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.i}}</td>
+                    <td>{{d.a | number:precision}}</td>
+                    <td>{{d.b | number:precision}}</td>
+                    <td>{{d.c | number:precision}}</td>
+                    <td>{{d.f_of_c | number:precision}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rfdisplay__result">
+            <h5 *ngIf="gotResult"> Root is {{root| number:precision}} </h5>
+            <h5 *ngIf="!gotResult"> Cannot find root in given interval</h5>
+        </div>
+    </div>
+</div>

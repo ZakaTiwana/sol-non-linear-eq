@@ -1,6 +1,6 @@
 <div id="bisection-container">
     <h1> Find Root by Bisection Method</h1>
-    <form class="biform form-group" [formGroup]="biFrom" >
+    <form class="biform form-group" [formGroup]="biForm" >
         <label for="equation" class="biform__label">f(x) = </label>
         <input  required type="text" id="equation" formControlName="equation" class="biform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
         <label for="from" class="biform__label">Interval (a) From :</label>
@@ -16,7 +16,7 @@
     </form>
 
     <div *ngIf="isSubmited" class="bidisplay">
-        <h3>Solution for; f(x) = {{biFrom.value.equation}} </h3>
+        <h3>Solution for; f(x) = {{biForm.value.equation}} </h3>
         <table class="table bidisplay__table">
             <thead>
                 <th>n</th>

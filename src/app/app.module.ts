@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
