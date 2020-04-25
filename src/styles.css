@@ -10,10 +10,19 @@
   
 html {
     scroll-behavior: smooth;
-    background-color: darkslategray;
-    color: white;
 }
 
 a{
     text-decoration: none;
+}
+body{
+    background-color: darkslategray;
+    color: white;
+}
+
+td,th{
+    color: white;
+}
+thead{
+    background-color: rgb(0, 37, 0);
 }

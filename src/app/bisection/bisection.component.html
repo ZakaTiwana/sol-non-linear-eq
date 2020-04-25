@@ -14,15 +14,11 @@
         </select>
         <button (click)="eval()" class="biform__submit"> find </button>
     </form>
-    <hr>
+
+
     <div *ngIf="isSubmited" class="bidisplay">
-        <!-- <div *ngFor="let d of data">
-            <p>Iteration : {{d.i}}</p>
-            <p>Intreval [a,b] : [{{d.a| number:precision}},{{d.b| number:precision}}]</p>
-            <p>c : {{d.c| number:precision}}</p>
-            <p>f(c) : {{d.f_of_c | number:precision}}</p>
-        </div> -->
-        <table>
+        <h3>Solution for; f(x) = {{biFrom.value.equation}} </h3>
+        <table class="table bidisplay__table">
             <thead>
                 <th>n</th>
                 <th>a</th>

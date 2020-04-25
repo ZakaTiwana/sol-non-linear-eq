@@ -23,7 +23,7 @@ export class BisectionComponent implements OnInit {
       to:null,
       precision:1
     });
-
+    this.biFrom.valueChanges.subscribe(()=>this.isSubmited=false);
   }
 
   eval(){
@@ -38,7 +38,7 @@ export class BisectionComponent implements OnInit {
     b = this.biFrom.value.to;
     p = this.biFrom.value.precision;
     this.precision = '.1-'+p;
-    this.bisectionMethod(a,b,p,20);
+    this.bisectionMethod(a,b,p,100);
   }
 
   bisectionMethod(a:number,b:number,p:number,n:number){

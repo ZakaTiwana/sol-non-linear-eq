@@ -39,6 +39,14 @@
     border-radius: 2px;
 }
 
+.bidisplay{
+    margin-top: 3rem;
+}
+.bidisplay__table{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 @media only screen and (max-width:600px){
     .biform{
         grid-template-columns: 1fr;
