@@ -1,1 +1,45 @@
-<p>secant works!</p>
+<div id="secant-container">
+    <h1> Find Root by Bisection Method</h1>
+    <form class="sform form-group" [formGroup]="sForm" >
+        <label for="equation" class="sform__label">f(x) = </label>
+        <input  required type="text" id="equation" formControlName="equation" class="sform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
+        <label for="from" class="sform__label">Interval (a) From :</label>
+        <input  required type="number" id="from" formControlName="from" class="sform__input form-control" step="0.001" placeholder="e.g 0.4">
+        <label for="to"  class="sform__label">Interval (b) To :</label>
+        <input  required type="number" id="to" formControlName="to" class="sform__input form-control"  step="0.001" placeholder="e.g 0.6">
+
+        <label for="precision" class="sform__label">precision upto decimal places :</label>
+        <select  name="precision" id="precision" formControlName="precision" class="sform__select form-control">
+            <option *ngFor="let n of [1,2,3,4,5,6,9,8,9,10]" [value]="n"> {{n}} </option>
+        </select>
+        <button (click)="eval()" class="sform__submit"> Find </button>
+    </form>
+
+    <div *ngIf="isSubmited" class="sdisplay">
+        <h3>Solution for; f(x) = {{sForm.value.equation}} </h3>
+        <table class="table sdisplay__table">
+            <thead>
+                <th>n</th>
+                <th>a</th>
+                <th>b</th>
+                <th mathjax>\(c=\frac{{ '{a.f(b)-b.f(a)}' }}{{ '{f(b)-f(a)}' }}\)</th>
+                <th>f(c)</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.i}}</td>
+                    <td>{{d.a | number:precision}}</td>
+                    <td>{{d.b | number:precision}}</td>
+                    <td>{{d.c | number:precision}}</td>
+                    <td>{{d.f_of_c | number:precision}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="sdisplay__result">
+            <h5 *ngIf="gotResult"> Root is {{root| number:precision}} </h5>
+            <h5 *ngIf="!gotResult"> Cannot find root in given interval</h5>
+        </div>
+    </div>
+</div>

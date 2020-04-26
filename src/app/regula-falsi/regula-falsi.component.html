@@ -10,7 +10,7 @@
 
         <label for="precision" class="rfform__label">precision upto decimal places :</label>
         <select  name="precision" id="precision" formControlName="precision" class="rfform__select form-control">
-            <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
+            <option *ngFor="let n of [1,2,3,4,5,6,9,8,9,10]" [value]="n"> {{n}} </option>
         </select>
         <button (click)="eval()" class="rfform__submit"> Find </button>
     </form>
@@ -22,7 +22,7 @@
                 <th>n</th>
                 <th>a</th>
                 <th>b</th>
-                <th><img src="../../assets/rf_folmula.svg" style="filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(329deg) brightness(102%) contrast(106%);;" alt="folmula"></th>
+                <th mathjax>\(c=\frac{{ '{a.f(b)-b.f(a)}' }}{{ '{f(b)-f(a)}' }}\)</th>
                 <th>f(c)</th>
             </thead>
 

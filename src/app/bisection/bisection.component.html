@@ -10,7 +10,7 @@
 
         <label for="precision" class="biform__label">precision upto decimal places :</label>
         <select  name="precision" id="precision" formControlName="precision" class="biform__select form-control">
-            <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n"> {{n}} </option>
+            <option *ngFor="let n of [1,2,3,4,5,6,9,8,9,10]" [value]="n"> {{n}} </option>
         </select>
         <button (click)="eval()" class="biform__submit"> Find </button>
     </form>
@@ -22,7 +22,7 @@
                 <th>n</th>
                 <th>a</th>
                 <th>b</th>
-                <th>c = (a+b)/2</th>
+                <th mathjax> \(c=\frac{{'{a+b}'}}2\) </th>
                 <th>f(c)</th>
             </thead>
 

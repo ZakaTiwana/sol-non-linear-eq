@@ -22,6 +22,7 @@
     "@types/mathjs": "^6.0.5",
     "bootstrap": "^4.4.1",
     "mathjs": "^6.6.4",
+    "ngx-mathjax": "0.0.11",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
