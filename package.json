@@ -1,6 +1,6 @@
 {
-  "name": "sol-nonlinera-eq",
-  "version": "0.0.0",
+  "name": "sol-nonlinear-eq",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
