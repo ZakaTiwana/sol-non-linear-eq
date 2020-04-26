@@ -1,1 +1,44 @@
-<p>iteration works!</p>
+<div id="iteration-container">
+    <h1 mathjax> Find Root by Iteration Method using \(\varnothing(x)\) </h1>
+    <form class="itform form-group" [formGroup]="itForm" >
+        <label for="equation" class="itform__label" mathjax>\(\varnothing(x)\) = </label>
+        <input  required type="text" id="equation" formControlName="equation" class="itform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
+
+        <label for="from"  class="itform__label" mathjax >Inital guess \(x_0\) :</label>
+        <input  required type="number" id="from" formControlName="from" class="itform__input form-control"  step="0.001" placeholder="e.g 0.6">
+
+        <label for="precision" class="itform__label">precision upto decimal places :</label>
+
+        <select  name="precision" id="precision" formControlName="precision" class="itform__select form-control">
+            <option *ngFor="let n of [1,2,3,4,5,6,9,8,9,10]" [value]="n"> {{n}} </option>
+        </select>
+
+        <button (click)="eval()" class="itform__submit"> Find </button>
+    </form>
+
+    <div *ngIf="isSubmited" class="itdisplay">
+        <h3>Solution for; f(x) = {{itForm.value.equation}} </h3>
+        <table class="table itdisplay__table">
+            <thead>
+                <th>n</th>
+                <th mathjax>\(x_0\)</th>
+                <th mathjax>\(x_1=\varnothing(x_0)\)</th>
+                <th mathjax>\(x_1 - x_0\)</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.i}}</td>
+                    <td>{{d.x0 | number:precision}}</td>
+                    <td>{{d.x1 | number:precision}}</td>
+                    <td>{{d.diff | number:precision}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="itdisplay__result">
+            <h5 *ngIf="gotResult"> Root is {{root| number:precision}} </h5>
+            <h5 *ngIf="!gotResult"> Cannot find root in given interval</h5>
+        </div>
+    </div>
+</div>

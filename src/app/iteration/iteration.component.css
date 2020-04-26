@@ -1,0 +1,63 @@
+#iteration-container{
+    background-color: black;
+    min-height: 70vh;
+    padding: 2rem;
+    
+}
+
+.itform{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+
+.itform__submit{
+    grid-column: 3/4;   
+    background-color: green;
+    border: none;
+    color: inherit;
+    border-radius: 5px;
+}
+.itform__submit:hover{
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+
+.itform__submit:focus{
+    border: 1px solid greenyellow;
+    outline: none;
+}
+
+.itform__submit::-moz-focus-inner {
+    border: 0;
+}
+
+
+
+.itform__label{
+    grid-column: 1/1;
+}
+.itform__input{
+    grid-column: 2/4;
+}
+.itform > *[type=number]:focus,*[type=text]:focus,#precision:focus{
+    border: 2px solid rgb(0, 89, 255);
+    border-radius: 2px;
+}
+
+.itdisplay{
+    margin-top: 3rem;
+}
+.itdisplay__table{
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width:600px){
+    .itform{
+        grid-template-columns: 1fr;
+    }
+    .itform > *{
+        grid-column: auto;
+    }
+}

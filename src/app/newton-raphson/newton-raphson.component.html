@@ -1,1 +1,43 @@
-<p>newton-raphson works!</p>
+<div id="newton-raphson-container">
+    <h1> Find Root by Newton Raphson Method</h1>
+    <form class="nrform form-group" [formGroup]="nrForm" >
+        <label for="equation" class="nrform__label">f(x) = </label>
+        <input  required type="text" id="equation" formControlName="equation" class="nrform__input form-control" placeholder="e.g  sin(x) - x^2 + 1">
+        <label for="derivative" class="nrform__label" mathjax> \( f^{{"{'}"}}(x)\) = </label>
+        <input  required type="text" id="derivative" formControlName="derivative" class="nrform__input form-control" placeholder="e.g cos(x)-2x">
+        <label for="from"  class="nrform__label" mathjax >Inital guess \(x_0\) :</label>
+        <input  required type="number" id="from" formControlName="from" class="nrform__input form-control"  step="0.001" placeholder="e.g 0.6">
+
+        <label for="precision" class="nrform__label">precision upto decimal places :</label>
+        <select  name="precision" id="precision" formControlName="precision" class="nrform__select form-control">
+            <option *ngFor="let n of [1,2,3,4,5,6,9,8,9,10]" [value]="n"> {{n}} </option>
+        </select>
+        <button (click)="eval()" class="nrform__submit"> Find </button>
+    </form>
+
+    <div *ngIf="isSubmited" class="nrdisplay">
+        <h3>Solution for; f(x) = {{nrForm.value.equation}} </h3>
+        <table class="table nrdisplay__table">
+            <thead>
+                <th>n</th>
+                <th mathjax>\(x_0\)</th>
+                <th mathjax>\(x_1=x_0-\frac {{ "{f(x_0)}{f^{'}(x_0)}" }}\)</th>
+                <th mathjax>\(f(x_1)\)</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.i}}</td>
+                    <td>{{d.x0 | number:precision}}</td>
+                    <td>{{d.x1 | number:precision}}</td>
+                    <td>{{d.f_of_x1 | number:precision}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nrdisplay__result">
+            <h5 *ngIf="gotResult"> Root is {{root| number:precision}} </h5>
+            <h5 *ngIf="!gotResult"> Cannot find root in given interval</h5>
+        </div>
+    </div>
+</div>
