@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup } from '@angular/forms';
+import { FormBuilder,FormGroup, AbstractControl } from '@angular/forms';
 import { parser } from 'mathjs';
 
 @Component({
@@ -21,16 +21,20 @@ export class BisectionComponent implements OnInit {
 
   ngOnInit() {
     this.biForm = this.fb.group({
-      equation:"",
+      equation:["",validFormula],
       from:null,
       to:null,
       precision:1
     });
     this.biForm.valueChanges.subscribe(()=>this.isSubmited=false);
+    // console.log(this.biForm)
   }
 
   eval(){
-    if(this.biForm.invalid) return;
+    if(this.biForm.invalid) {
+      console.log("invalid");  
+      return;
+    }
     this.isSubmited = true;
     const par = parser();
     par.evaluate('f(x) = '+this.biForm.value.equation);
@@ -80,4 +84,20 @@ export class BisectionComponent implements OnInit {
 
 class biData {
   constructor (public i:number,public a:number,public b:number,public c:number,public f_of_c:number){}
+}
+
+function validFormula(control:AbstractControl) : {[key:string]:any}|null{
+  if(control.pristine) return null;
+  const formula = control.value;
+  const par = parser();
+  try{
+    par.evaluate('f(x) = '+formula);
+  let f:any = par.get('f');
+  par.clear();
+    f(0);
+  } catch (error) {
+    console.log("validFormula: invalid");
+    return {"validFormula":false}
+  }
+  return null;
 }
